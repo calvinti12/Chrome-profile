@@ -1,0 +1,9 @@
+{
+    "name": "com.isolated.tabs.host",
+    "description": "Chrome Profile Isolation Native Host",
+    "path": "C:\\Program Files\\Chrome Profile Isolator\\profile_manager.py",
+    "type": "stdio",
+    "allowed_origins": [
+      "chrome-extension://nhiemhkpeiggheoohbcfdlbaiebkpnhn/"
+    ]
+  }

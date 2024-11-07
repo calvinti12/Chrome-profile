@@ -1,0 +1,34 @@
+@echo off
+echo Installing Chrome Profile Isolator...
+
+:: Check for admin privileges
+net session >nul 2>&1
+if %errorLevel% == 0 (
+    echo Administrative privileges confirmed
+) else (
+    echo This script requires administrative privileges
+    echo Please run as administrator
+    pause
+    exit /b 1
+)
+
+:: Set paths
+set "HOST_PATH=C:\Program Files\Chrome Profile Isolator\com.isolated.tabs.host.json"
+set "REGISTRY_PATH=HKCU\Software\Google\Chrome\NativeMessagingHosts\com.isolated.tabs.host"
+
+:: Create registry entry
+REG ADD "%REGISTRY_PATH%" /ve /t REG_SZ /d "%HOST_PATH%" /f
+
+:: Verify Python installation
+python --version >nul 2>&1
+if %errorLevel% == 0 (
+    echo Python is installed
+) else (
+    echo Python is not installed. Please install Python 3 from python.org
+    pause
+    exit /b 1
+)
+
+echo Installation complete!
+echo Please restart Chrome for the changes to take effect.
+pause
